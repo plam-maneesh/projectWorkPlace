@@ -1,68 +1,60 @@
-class signupForm{
+class signupForm {
 
 
-constructor(){
+  constructor() {
 
-  this.Users = [];
- this.form = document.getElementById('signupForm');
- this.name = document.getElementById('name');
- this.password = document.getElementById('password');
-this.submit = document.getElementById('submit');
-const userList = document.getElementById('userList');
+    this.Users = [];
+    this.form = document.getElementById('signupForm');
+    this.name = document.getElementById('name');
+    this.password = document.getElementById('password');
+    this.submit = document.getElementById('submit');
+    const userList = document.getElementById('userList');
 
-  this.name.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    userList.innerHTML += `<li>${inputValue}</li>`;
-    console.log("Name input value:", inputValue);
+    this.name.addEventListener('input', (event) => {
 
+      event.preventDefault(event);
+      let nameValue = event.target.value; // get the value of the name input
+
+
+    });
+
+
+    this.password.addEventListener('input', (event) => {
+
+      let passwordValue = event.target.value; // get the value of the password input
+
+    });
   
-  });
 
-  this.password.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    userList.innerHTML += `<li>${inputValue}</li>`;
-  
-    console.log("Password input value:", inputValue);
+    this.submit.addEventListener('click', (event) => {
+      event.preventDefault(event);
+      let nameValue = this.name.value; // get the value of the name input
+      let passwordValue = this.password.value; // get the value of the password input
+
+      if (nameValue && passwordValue) {
+        this.Users.push({ name: nameValue, password: passwordValue })
+        this.name.value = '';
+        this.password.value = '';
+        this.renderUserList();
+        }
+      
+      }
+    );
+
   }
-  );
 
-  this.form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log("Form submitted");
-  });
-  this.submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log("Submit button clicked");
+
+
+
+  renderUserList() {
+    const userList = document.getElementById('userList');
+    userList.innerHTML = ''; // clear the list before rendering
+    this.Users.forEach((user) => {
+      const li = document.createElement('li');
+      li.textContent = `Name: ${user.name}, Password: ${user.password}`;
+      userList.appendChild(li);
+    });
   }
-  );
-
-  this.submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log("Submit button clicked");
-  }
-  );
- 
-  this.submit.addEventLisetener('click', (event) =>{
-
-   event.preventDefault();
-
-   this.Users.push({
-      name: this.name.value, 
-      password: this.password.value,
-   });
-
-   console.log("User array:", this.Users);
-   userList.innerHTML = `<li>name: ${this.name.value}, Password: ${this.password.value}</li>`;
-     
-  })
 }
-
-
-
-}
-
 
 const form = new signupForm();
-// const form = new signupForm();
-
-console.log(form);
