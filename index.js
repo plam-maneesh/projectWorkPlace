@@ -14,8 +14,8 @@ class signupForm {
           if (nameValue && passwordValue) {
               this.Users.push({ name: nameValue, password: passwordValue });
               console.log("Users array after addition:", this.Users); // Debugging
-              this.name.value = '';
-              this.password.value = '';
+              this.name.value = ''; 
+              this.password.value = ''; 
               this.renderUserList();
           }
       });
