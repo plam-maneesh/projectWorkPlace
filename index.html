@@ -3,35 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup Page</title>
-  <link rel="stylesheet" href="index.css">
- 
+  <title>Document</title>
 </head>
 <body>
   
-  <div class="container">
-
-  <h1>Sign Up</h1>
-  <form id="signupForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br><br>
-    <button type="submit" id="submit">Sign Up</button>
-  </form>
 
 
- <h2>Registered Users</h2>
- <ul id="listUsers"></ul>
-
-  </div>
+<div id="container">
+        <h1>Calculate Student Grade</h1>
 
 
- 
- 
+        <form  id="student-form">
+    
+              <label  class="studentName" for="enter-name"> Enter Name:</label>
+    
+              <input class="studentName" type="text" id="studentName" placeholder="Enter your Name...">
+              <br>
 
-  <script src="index.js"></script>
+              <label for="marks">Enter Marks:</label> 
+              <input type="number" id="marks" placeholder="0 100" />
+                   <br>
+             <button id="calculate">Calculate Grade</button>
+
+             <p id="result"></p>
+    
+        </form>
+
+    </div>
+
+   
+
+
+
+
+    
+
+
+
+
+
+    <script src="index.js"></script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
