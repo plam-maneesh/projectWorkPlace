@@ -1,68 +1,37 @@
-class signupForm{
+class signupForm {
+  constructor() {
+      this.Users = [];
+      this.form = document.getElementById('signupForm');
+      this.name = document.getElementById('name');
+      this.password = document.getElementById('password');
+      this.submit = document.getElementById('submit');
 
+      this.submit.addEventListener('click', (event) => {
+          event.preventDefault();
+          let nameValue = this.name.value;
+          let passwordValue = this.password.value;
 
-constructor(){
-
-  this.Users = [];
- this.form = document.getElementById('signupForm');
- this.name = document.getElementById('name');
- this.password = document.getElementById('password');
-this.submit = document.getElementById('submit');
-const userList = document.getElementById('userList');
-
-  this.name.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    userList.innerHTML += `<li>${inputValue}</li>`;
-    console.log("Name input value:", inputValue);
-
-  
-  });
-
-  this.password.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    userList.innerHTML += `<li>${inputValue}</li>`;
-  
-    console.log("Password input value:", inputValue);
+          if (nameValue && passwordValue) {
+              this.Users.push({ name: nameValue, password: passwordValue });
+              console.log("Users array after addition:", this.Users); // Debugging
+              this.name.value = ''; 
+              this.password.value = ''; 
+              this.renderUserList();
+          }
+      });
   }
-  );
 
-  this.form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log("Form submitted");
-  });
-  this.submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log("Submit button clicked");
+  renderUserList() {
+      const userList = document.getElementById('listUsers');
+      console.log("Users", this.Users); // Corrected to log this.Users
+      userList.innerHTML = ''; 
+      this.Users.forEach((user) => {
+          console.log("Rendering user:", user); // Debugging
+          const li = document.createElement('li');
+          li.textContent = `Name: ${user.name}, Password: ${user.password}`;
+          userList.appendChild(li);
+      });
   }
-  );
-
-  this.submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log("Submit button clicked");
-  }
-  );
- 
-  this.submit.addEventLisetener('click', (event) =>{
-
-   event.preventDefault();
-
-   this.Users.push({
-      name: this.name.value, 
-      password: this.password.value,
-   });
-
-   console.log("User array:", this.Users);
-   userList.innerHTML = `<li>name: ${this.name.value}, Password: ${this.password.value}</li>`;
-     
-  })
 }
-
-
-
-}
-
 
 const form = new signupForm();
-// const form = new signupForm();
-
-console.log(form);
